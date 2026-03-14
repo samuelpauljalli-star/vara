@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vasamsetti Chiranjeeva Vara Prasad - Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --text-color: #c5c6c7;
+            --neon-blue: #66fcf1;
+            --neon-green: #45a29e;
+            --neon-purple: #c026d3;
+            --neon-pink: #ff007f;
+            --glass-bg: rgba(31, 40, 51, 0.4);
+            --glass-border: rgba(102, 252, 241, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Dynamic Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 15% 50%, rgba(192, 38, 211, 0.1), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(102, 252, 241, 0.1), transparent 25%);
+            z-index: -2;
+            animation: pulseBg 10s infinite alternate linear;
+        }
+
+        @keyframes pulseBg {
+            0% {
+                transform: scale(1);
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                transform: scale(1.1);
+                filter: hue-rotate(30deg);
+            }
+        }
+
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.6;
+            animation: floatBlob 12s infinite alternate ease-in-out;
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: var(--neon-purple);
+        }
+
+        .blob-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: var(--neon-blue);
+            animation-delay: -5s;
+        }
+
+        @keyframes floatBlob {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(100px, 150px) scale(1.2);
+            }
+        }
+
+        /* Reusable Glass Effect */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        /* Navbar & Logo */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: 0.4s;
+        }
+
+        .navbar.scrolled {
+            background: rgba(11, 12, 16, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 10px 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* My Photo as Logo */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 15px var(--neon-blue);
+            animation: glowLogo 3s infinite alternate;
+            transition: transform 0.3s;
+        }
+
+        .logo-container:hover .logo-img {
+            transform: rotate(360deg);
+            transition: transform 1s ease-in-out;
+        }
+
+        @keyframes glowLogo {
+            0% {
+                box-shadow: 0 0 10px var(--neon-blue);
+            }
+
+            100% {
+                box-shadow: 0 0 25px var(--neon-blue), 0 0 10px var(--neon-purple);
+                border-color: var(--neon-purple);
+            }
+        }
+
+        .logo-text {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--neon-blue);
+            transition: 0.3s;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Typography & Layout */
+        section {
+            min-height: 100vh;
+            padding: 100px 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .section-title span {
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        /* Hero / Home Section */
+        .hero {
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h3 {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            animation: slideInDown 1s both;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            animation: slideInLeft 1s 0.2s both;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 3s linear infinite;
+        }
+
+        @keyframes gradientText {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            color: var(--neon-green);
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(69, 162, 158, 0.5);
+            animation: slideInRight 1s 0.4s both;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            animation: fadeInUp 1s 0.6s both;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: var(--neon-blue);
+            color: #000;
+            box-shadow: 0 0 20px rgba(102, 252, 241, 0.4);
+            border: 2px solid var(--neon-blue);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 40px var(--neon-blue);
+            transform: translateY(-5px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--neon-purple);
+            box-shadow: 0 0 15px rgba(192, 38, 211, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: var(--neon-purple);
+            box-shadow: 0 0 35px var(--neon-purple);
+            transform: translateY(-5px);
+        }
+
+        .profile-container {
+            margin-bottom: 30px;
+            animation: fadeInUp 1s both;
+        }
+
+        .profile-img {
+            width: 230px;
+            height: 230px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--neon-blue);
+            box-shadow: 0 0 30px var(--neon-blue), 0 0 50px rgba(102, 252, 241, 0.3);
+            animation: floatProfile 5s ease-in-out infinite;
+            transition: all 0.5s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 40px var(--neon-purple), 0 0 60px rgba(192, 38, 211, 0.4);
+        }
+
+        @keyframes floatProfile {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Academic Highlights */
+        .academic-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 80px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 30px;
+            transition: 0.4s;
+            border-left: 5px solid var(--neon-blue);
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 20px;
+            border-top: 1px solid var(--glass-border);
+            border-right: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .highlight-item.purple {
+            border-left: 5px solid var(--neon-purple);
+        }
+
+        .highlight-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(102, 252, 241, 0.2);
+            border-color: var(--neon-blue);
+        }
+
+        .highlight-item.purple:hover {
+            box-shadow: 0 15px 40px rgba(192, 38, 211, 0.2);
+            border-color: var(--neon-purple);
+        }
+
+        .college-logo-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: #fff;
+            padding: 10px;
+            border: 3px solid var(--neon-blue);
+            box-shadow: 0 0 20px rgba(102, 252, 241, 0.4);
+            flex-shrink: 0;
+            transition: 0.4s ease;
+        }
+
+        .highlight-item.purple .college-logo-circle {
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 20px rgba(192, 38, 211, 0.4);
+        }
+
+        .college-logo-circle:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .highlight-text {
+            text-align: left;
+        }
+
+        .highlight-text h3 {
+            color: var(--neon-blue);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .highlight-item.purple .highlight-text h3 {
+            color: var(--neon-purple);
+        }
+
+        .highlight-text h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .highlight-text p {
+            font-size: 1rem;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Education Timeline */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--neon-blue), var(--neon-purple));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .container {
+            padding: 10px 50px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--bg-color);
+            border: 4px solid var(--neon-blue);
+            border-radius: 50%;
+            top: 30px;
+            z-index: 1;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .left::after {
+            right: -12px;
+        }
+
+        .right::after {
+            left: -12px;
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 10px var(--neon-purple);
+        }
+
+        .content {
+            padding: 30px;
+            position: relative;
+            border-radius: 20px;
+            transition: 0.4s;
+            cursor: default;
+        }
+
+        .content:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--neon-blue);
+            box-shadow: 0 15px 40px rgba(102, 252, 241, 0.2);
+        }
+
+        .right .content:hover {
+            border-color: var(--neon-purple);
+            box-shadow: 0 15px 40px rgba(192, 38, 211, 0.2);
+        }
+
+        .content h2 {
+            color: #fff;
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+
+        .content .inst {
+            color: var(--neon-blue);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .right .content .inst {
+            color: var(--neon-purple);
+        }
+
+        .content .date {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .skill-box {
+            padding: 40px;
+            text-align: center;
+            transition: 0.5s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, var(--neon-blue), transparent 30%);
+            animation: rotateBg 4s linear infinite;
+            z-index: -1;
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .skill-box.backend::before {
+            background: conic-gradient(transparent, var(--neon-purple), transparent 30%);
+        }
+
+        @keyframes rotateBg {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .skill-box:hover::before {
+            opacity: 0.3;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-15px);
+        }
+
+        .skill-box h3 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .skill-box h3 i {
+            font-size: 3rem;
+            color: var(--neon-blue);
+            text-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        .skill-box.backend h3 i {
+            color: var(--neon-purple);
+            text-shadow: 0 0 20px var(--neon-purple);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .tag {
+            padding: 10px 25px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+
+        .tag:hover {
+            background: var(--neon-blue);
+            color: #0b0c10;
+            box-shadow: 0 0 20px var(--neon-blue);
+            transform: scale(1.1);
+        }
+
+        .backend .tag:hover {
+            background: var(--neon-purple);
+            box-shadow: 0 0 20px var(--neon-purple);
+        }
+
+        /* Contact */
+        .contact-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 30px;
+            width: 300px;
+            text-decoration: none;
+            color: #fff;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--neon-blue);
+            transform: scaleX(0);
+            transition: 0.4s;
+            transform-origin: left;
+        }
+
+        .contact-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            background: rgba(102, 252, 241, 0.1);
+            color: var(--neon-blue);
+            transition: 0.4s;
+        }
+
+        .contact-card:nth-child(even) .contact-icon {
+            background: rgba(192, 38, 211, 0.1);
+            color: var(--neon-purple);
+        }
+
+        .contact-card:nth-child(even)::after {
+            background: var(--neon-purple);
+        }
+
+        .contact-card:hover .contact-icon {
+            background: var(--neon-blue);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .contact-card:nth-child(even):hover .contact-icon {
+            background: var(--neon-purple);
+            color: #fff;
+            box-shadow: 0 0 15px var(--neon-purple);
+        }
+
+        .contact-info h4 {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-color);
+            background: rgba(11, 12, 16, 0.9);
+        }
+
+        footer span {
+            color: var(--neon-pink);
+            font-weight: bold;
+        }
+
+        /* Main Animations */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(80px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 900px) {
+            .navbar {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .navbar.scrolled {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .profile-img {
+                width: 170px;
+                height: 170px;
+            }
+
+            .timeline::after {
+                left: 30px;
+            }
+
+            .container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 20px;
+            }
+
+            .right {
+                left: 0;
+            }
+
+            .left::after,
+            .right::after {
+                left: 19px;
+            }
+
+            .contact-wrap {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-card {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .highlight-item {
+                flex-direction: column;
+                text-align: center;
+                border-left: 1px solid var(--glass-border);
+                border-top: 5px solid var(--neon-blue);
+                padding: 20px;
+            }
+
+            .highlight-item.purple {
+                border-left: 1px solid var(--glass-border);
+                border-top: 5px solid var(--neon-purple);
+            }
+
+            .highlight-text {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <nav class="navbar" id="navbar">
+        <a href="#home" class="logo-container">
+            <img src="vara.jpg" alt="Vara Prasad" class="logo-img">
+            <div class="logo-text">Vara prasad</div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="profile-container">
+            <img src="vara.jpg" alt="Vasamsetti Chiranjeevi Vara Prasad" class="profile-img">
+        </div>
+        <h3>Hey there, I am</h3>
+        <h1>Vasamsetti Chiranjeevi <br><span>Vara Prasad</span></h1>
+        <h2>B-Tech CSE Student</h2>
+        <div class="buttons">
+            <a href="#contact" class="btn btn-primary">Let's Connect</a>
+            <a href="#skills" class="btn btn-secondary">My Skills</a>
+        </div>
+    </section>
+
+    <section id="education">
+        <h1 class="section-title">Academic <span>Highlights</span></h1>
+
+        <div class="academic-highlights">
+            <div class="highlight-item reveal">
+                <img src="https://aliet.ac.in/images/logo.png" alt="ALIET Logo" class="college-logo-circle">
+                <div class="highlight-text">
+                    <h3>Current Status</h3>
+                    <h4>About My Institution</h4>
+                    <p>I am currently pursuing my B.Tech in Computer Science and Engineering at Andhra Loyola Institute
+                        of Engineering and Technology, located in Vijayawada, Andhra Pradesh, India. The institute is
+                        known for providing quality technical education, modern laboratories, and industry-oriented
+                        learning. It focuses on developing students’ technical skills, innovation, and professional
+                        values to prepare them for successful careers in engineering and technology.</p>
+                </div>
+            </div>
+
+            <div class="highlight-item reveal purple">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQClSeby6c68q3iPcS-9oeLHYCxRb0Qm5XhXA&s"
+                    alt="BVCITS Logo" class="college-logo-circle">
+                <div class="highlight-text">
+                    <h3>Diploma</h3>
+                    <h4>About My Institution</h4>
+                    <p>Bonam Venkata Chalamayya Institute of Technology and Science (BVCITS), established in 2002 in
+                        Batlapalem, Amalapuram, Andhra Pradesh, is a private, AICTE-approved, and NBA-accredited
+                        institution affiliated with JNTUK, Kakinada. It offers undergraduate (B.Tech), postgraduate
+                        (M.Tech, MBA, MCA), and diploma courses in various engineering and management.</p>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="section-title" style="margin-top: 40px;">My <span>Journey</span></h1>
+
+        <div class="timeline">
+            <!-- B-Tech -->
+            <div class="container left reveal">
+                <div class="content glass">
+                    <h2>B-Tech Computer Science Engineering</h2>
+                    <p class="inst">Andhra Loyola Institute of Engineering and Technology, Vijayawada</p>
+                    <span class="date"><i class="fa-regular fa-calendar"></i> 2nd Year (Currently Pursuing)</span>
+                    <p>Focusing on modern software architecture, algorithms, and practical development skills.</p>
+                </div>
+            </div>
+            <!-- Diploma -->
+            <div class="container right reveal">
+                <div class="content glass">
+                    <h2>Diploma in CSE</h2>
+                    <p class="inst">BVCITS, Amalapuram</p>
+                    <span class="date"><i class="fa-solid fa-graduation-cap"></i> Completed</span>
+                    <p>Acquired strong foundational knowledge in programming, hardware, and networking.</p>
+                </div>
+            </div>
+            <!-- SSC -->
+            <div class="container left reveal">
+                <div class="content glass">
+                    <h2>Secondary School Certificate (SSC)</h2>
+                    <p class="inst">ZPHS Kothapalem</p>
+                    <span class="date"><i class="fa-solid fa-check"></i> Completed</span>
+                    <p>Excelled in fundamental academics setting a solid base for technical education.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h1 class="section-title">Technical <span>Arsenal</span></h1>
+        <div class="skills-grid">
+            <div class="skill-box glass reveal">
+                <h3><i class="fa-brands fa-html5"></i> Frontend Visuals</h3>
+                <div class="tags">
+                    <span class="tag"><i class="fa-brands fa-html5"></i> HTML</span>
+                    <span class="tag"><i class="fa-brands fa-css3-alt"></i> CSS</span>
+                </div>
+            </div>
+
+            <div class="skill-box glass backend reveal">
+                <h3><i class="fa-solid fa-server"></i> Backend & Logic</h3>
+                <div class="tags">
+                    <span class="tag"><i class="fa-brands fa-python"></i> Python</span>
+                    <span class="tag"><i class="fa-brands fa-java"></i> Java</span>
+                    <span class="tag"><i class="fa-solid "></i>C</span>
+                    <span class="tag"><i class="fa-solid "></i>C++</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h1 class="section-title">Let's <span>Talk</span></h1>
+        <div class="contact-wrap">
+            <a href="tel:+917416538733" class="contact-card glass reveal">
+                <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                <div class="contact-info">
+                    <h4>Phone & Telegram</h4>
+                    <p>+91 7416538733</p>
+                </div>
+            </a>
+
+            <a href="https://wa.me/917416538733" target="_blank" class="contact-card glass reveal">
+                <div class="contact-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                <div class="contact-info">
+                    <h4>WhatsApp</h4>
+                    <p>+91 7416538733</p>
+                </div>
+            </a>
+
+            <a href="mailto:varaprasadvasamsetti128@gmail.com" class="contact-card glass reveal">
+                <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="contact-info">
+                    <h4>Email</h4>
+                    <p>varaprasadvasamsetti128<br>@gmail.com</p>
+                </div>
+            </a>
+
+            <a href="#" target="_blank" class="contact-card glass reveal">
+                <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                <div class="contact-info">
+                    <h4>LinkedIn</h4>
+                    <p>Vasamsetti Chiranjeevi...</p>
+                </div>
+            </a>
+
+            <a href="https://instagram.com/urs_truly_varaprasad" target="_blank" class="contact-card glass reveal">
+                <div class="contact-icon"><i class="fa-brands fa-instagram"></i></div>
+                <div class="contact-info">
+                    <h4>Instagram</h4>
+                    <p>@urs_truly_varaprasad</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Developed with <span>♥</span> by Vasamsetti Chiranjeeva Vara Prasad</p>
+    </footer>
+
+    <script>
+        // Navbar Scrolled Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Reveal Animation Builder
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+    </script>
+</body>
+
+</html>
